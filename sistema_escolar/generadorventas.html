@@ -10,10 +10,10 @@
 
         function generador() {
 
-            var num = document.getElementById("ea").value;
+            var num = document.getElementById("script").value;
             ventas = `USE punto_venta;<br>
-            DELETE FROM ventas;<br>
-            INSERT INTO ventas(fecha, hora)VALUES <br>(1,'`
+            DELETE FROM venta;<br>
+            INSERT INTO venta(id,fecha, hora)VALUES <br>(1,'`
             + generarFechaAleatoria() + "', '" + generarHoraAleatoria() + "'),";
 
             for (let index = 2; index <= num; index++) {
@@ -26,7 +26,20 @@
                 ventas = ventas.slice(0, -1) + ';';
             }
 
-            document.getElementById("ola").innerHTML = ventas;
+            
+            ventas += `<br>INSERT INTO venta_detalle(IDVenta, IDProducto) VALUES`;
+
+            for (let i = 1; i <= num; i++) {
+                var idventas = Math.floor(Math.random() * 10);
+                for (let j = 0; j < idventas; j++) {
+                    ventas += "<br>( "+i+","+Math.floor(1+(Math.random() * 10))+" ),";
+            
+                }
+            }
+            if (ventas.endsWith(',')) {
+                ventas = ventas.slice(0, -1) + ';';
+            }          
+            document.getElementById("generadorScript").innerHTML = ventas;
         }
 
         function generarFechaAleatoria() {
@@ -92,9 +105,9 @@
     <input type="button" value="generar ventas" onclick="generador()">
     <br>
     <input type="button" value="generar SQL" onclick="generarSQL()">
-    <input type="number" name="numero" id="ea" min = 0>
+    <input type="number" name="numero" id="script" min = 0>
 
-    <p id="ola">
+    <p id="generadorScript">
     </p>
 </body>
 
