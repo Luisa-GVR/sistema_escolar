@@ -16,8 +16,8 @@
             INSERT INTO venta(id,fecha, hora)VALUES <br>(1,'`
             + generarFechaAleatoria() + "', '" + generarHoraAleatoria() + "'),";
 
-            for (let index = 2; index <= num; index++) {
-                ventas += "<br>( "+index+" , '" + generarFechaAleatoria() 
+            for (let i = 2; i <= num; i++) {
+                ventas += "<br>( "+i+" , '" + generarFechaAleatoria() 
                 + "' , '" + generarHoraAleatoria() + "'),";
             }
 
@@ -43,7 +43,7 @@
         }
 
         function generarFechaAleatoria() {
-            var año = Math.floor(Math.random() * (2022 - 2000 + 1)) + 2000;
+            var year = Math.floor(Math.random() * (2022 - 2000 + 1)) + 2000;
             var mes = Math.floor(Math.random() * 12) + 1;
             var dia = Math.floor(Math.random() * 31) + 1;
             var hora = Math.floor(Math.random() * 24);
@@ -51,9 +51,9 @@
             var segundo = Math.floor(Math.random() * 60);
 
             // Crea el objeto Date con los valores aleatorios
-            var fechaAleatoria = new Date(año, mes - 1, dia, hora, minuto, segundo);
+            var fechaAleatoria = new Date(year, mes - 1, dia, hora, minuto, segundo);
 
-            // Formatea la fecha en el formato deseado (Año-Mes-Día)
+            // Formatea la fecha en el formato deseado (year-Mes-Día)
             var fechaFormateada = fechaAleatoria.toISOString().split('T')[0];
 
             return fechaFormateada;
@@ -66,9 +66,9 @@
             var segundos = Math.floor(Math.random() * 60); // 0 a 59
 
             // Formatear la hora en formato HH:MM:SS
-            var horaFormateada = padLeft(horas) + ":" + padLeft(minutos) + ":" + padLeft(segundos);
+            var horaFormat = padLeft(horas) + ":" + padLeft(minutos) + ":" + padLeft(segundos);
 
-            return horaFormateada;
+            return horaFormat;
         }
 
         // Función auxiliar para rellenar con ceros a la izquierda
