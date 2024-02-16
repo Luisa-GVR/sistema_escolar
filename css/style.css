@@ -1,0 +1,128 @@
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+
+
+
+.form-group label {
+    margin-bottom: 5px;
+    margin-right: 10px;
+    width: 30%;
+}
+
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(20%);
+}
+
+.body-index {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    
+}
+
+.container {
+    max-width: 32%;
+    padding: 8%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.header {
+    padding: 2%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(to bottom, rgb(66, 147, 201) 0%, rgba(72, 157, 196, 0.8) 50%, rgba(78, 155, 206, .15) 100%);
+    color: white;
+    font-size: 20px;
+    min-height: 10vh;
+
+  }
+
+  .error-message {
+    color: red; 
+    font-size: 16px; 
+    margin-top: 10px; 
+}
+
+.texto-bienvenida {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: #282a94;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.border-bottom{
+    border-bottom: 2px solid #333;
+}
+
+.footer {
+    background-color: rgb(23, 45, 59);
+    color: rgba(72, 157, 196);
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.input-wrapper {
+    flex: 1; 
+    width: 100%;
+}
+
+label {
+    margin-bottom: 5px;
+    margin-right: 10px;
+    width: 30%;
+    flex: 0 0 30%;
+}
+
+input[type="number"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+
+}
+
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}

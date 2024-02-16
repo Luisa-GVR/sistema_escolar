@@ -1,26 +1,42 @@
 <?php
+    include ("./inc/config.php");
 
-if (empty($_POST["user"]) || empty($_POST["password"])) {
-    header  ("Location:index.php");
-}
-    print_r ($_POST);
-    echo "<br>";
-
-    $SQL = "SELECT * FROM alumno where Expediente = " .$_POST["user"] ." AND Contra = MD5('".$_POST["password"]."');";
-    
-    echo $SQL;
-    echo "<br>";
-
-    $connection = mysqli_connect("localhost:3307","root","", "sistema_escolar") or die("La conexión ha fallado");
-    
-    $result = mysqli_query($connection, $SQL) or die("La conexión ha fallado");
-
-    if ($result->num_rows == 1){
-        echo "Usuario Correcto";
-        header  ("Location:menu.php");
-    } else{
-        header  ("Location:index.php?error=100");
+    if (empty($_POST["user"]) || empty($_POST["password"])) {
+        header  ("Location:index.php");
     }
-    mysqli_close($connection);
+    
+    $expediente = $_POST["user"];
+
+    $contrasenia = $_POST["password"];
+    
+    if(!empty($expediente || $contrasenia)){
+        $query = "SELECT * FROM alumno WHERE Expediente = $expediente AND Contra = "  
+        . "MD5(" . "'" . $contrasenia . "'" . ");";
+
+        $connection = mysqli_connect($HOST, $USER, $PSWD, $NAMEBD) or die("Hubo un fallo en la conexion");
+
+        $result = mysqli_query($connection, $query) or die("No me conecté");
+
+
+        if($result ->num_rows == 1 ){
+            session_start();
+    
+            $_SESSION["validada"] = 1;
+            $_SESSION["expediente"] = $expediente;
+               
+            header("Location:menu.php");
+    
+        }else{
+            header("Location:index.php?error=100");
+        
+        }
+
+        mysqli_close($connection);
+    
+    }else{
+        header("Location:index.php?error=200");
+    }
+
+    
 
 ?>
