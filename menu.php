@@ -1,17 +1,14 @@
 <?php
-session_start();
-if (!isset($_SESSION["validada"]) || $_SESSION["validada"] !== 1) {
-    header("Location: index.php");
-    exit;
-}
+include_once ("./inc/config.php");
+SessionValidator::validateSession();
+include_once("./modelos/menu.modelo.php");
 
-include ("./inc/config.php");
 $expediente = $_SESSION["expediente"];
 $query = "SELECT Nombre, Apellido1, Apellido2 FROM alumno WHERE Expediente = '$expediente'";
 $connection = mysqli_connect($HOST, $USER, $PSWD, $NAMEBD) or die("Hubo un fallo en la conexion");
 $result = mysqli_query($connection, $query) or die("No se pudo realizar la consulta");
 
-if($result && mysqli_num_rows($result) > 0) {
+if ($result && mysqli_num_rows($result) > 0) {
     $alumno = mysqli_fetch_assoc($result);
     $nombre = $alumno["Nombre"];
     $apellido1 = $alumno["Apellido1"];
@@ -22,37 +19,31 @@ if($result && mysqli_num_rows($result) > 0) {
     $apellido2 = "Apellido2 no encontrado";
 }
 
-
+$nombreCompleto = $nombre . " " . $apellido1 . " " . $apellido2;
 mysqli_close($connection);
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel ="stylesheet" href="css/style.css">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Sistema Escolar</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel ="stylesheet" href="css/style.css?v=1">
+    <script src='main.js'></script>
 </head>
 <body>
     <div class="header">
-        <?php echo "<h1> Bienvenido,  $nombre $apellido1 $apellido2 </h1>"; ?>    
+        <?php optionMenu(); ?>
     </div>
 
-    <div class="form-group">
-      <ul>
-        <li>materias</li>
-        <li>cursos</li>
-        <li>kardex</li>
-        <li>calificaciones</li>
-        <li>idiomas</li>
-        <li>adeudos</li>
-    </ul>  
-    </div>
-    
+    <div class="container-below">
+            <?php encabezado($nombreCompleto); ?>
 
-    <a href="logout.php">Log out</a>
+    </div>
 
     <div class="footer">
         <p>&copy; Sistema Escolar</p>

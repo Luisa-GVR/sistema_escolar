@@ -3,9 +3,6 @@
     width: 100%;
 }
 
-
-
-
 .form-group label {
     margin-bottom: 5px;
     margin-right: 10px;
@@ -32,7 +29,7 @@
 }
 
 .container {
-    max-width: 32%;
+    max-width: 70%;
     padding: 8%;
     background-color: #fff;
     border-radius: 10px;
@@ -43,9 +40,11 @@
 }
 
 .header {
-    padding: 2%;
+    padding: 1%;
+    margin-bottom: 7%;
     position: fixed;
     top: 0;
+    left:0;
     width: 100%;
     text-align: center;
     background: linear-gradient(to bottom, rgb(66, 147, 201) 0%, rgba(72, 157, 196, 0.8) 50%, rgba(78, 155, 206, .15) 100%);
@@ -81,6 +80,7 @@
     text-align: center;
     position: fixed;
     bottom: 0;
+    left:0;
     width: 100%;
 }
 
@@ -125,4 +125,51 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+button[disabled] {
+    background-color: #806868; 
+    color: #201717; 
+    cursor: not-allowed;
+    
+}
+
+button[disabled]:hover {
+    background-color:  #806868; 
+    color: inherit;
+    cursor: not-allowed;
+}
+
+.menu-table {
+    left: 0px;
+    width: 95%;
+    border-collapse: separate;
+    margin: auto; 
+}
+
+.menu-table th, .menu-table td {
+    padding: 1%; 
+    text-align: center;
+}
+
+.menu-table th a, .menu-table td a {
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-table th a:hover, .menu-table td a:hover {
+    color: #555;
+}
+
+.container-below{
+    left: 0px;
+    width: 95%;
+    position: fixed;
+    top: 5%;
+    padding: 3%;
+    margin-top: 5%;
+    border-radius: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
